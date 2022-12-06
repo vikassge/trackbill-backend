@@ -9,6 +9,13 @@ const transactionsRoute = require('./routes/transactionsRoute')
 app.use('/api/users',userRoute);
 app.use('/api/transactions/' , transactionsRoute)
 const port=process.env.PORT || 5000; 
+const corsOptions = {
+    origin: (origin, callback) => {
+      callback(null, true);
+    },
+  };
+  const cors = require("cors");
+  app.use(cors(corsOptions));
 // if(process.env.NODE_ENV === 'production')
 // {
 //     //  app.use('/' , express.static('client/build'))
